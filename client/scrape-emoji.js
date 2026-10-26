@@ -1,4 +1,6 @@
 import fs from 'fs';
+import { argv } from 'node:process';
+import { pathToFileURL } from 'node:url';
 import fetch from 'node-fetch';
 import puppeteer from 'puppeteer';
 import { emojiList } from './emoji-list.js';
@@ -30,4 +32,6 @@ export const scrapeEmoji = async () => {
   }
 };
 
-scrapeEmoji();
+if (import.meta.url === pathToFileURL(argv[1]).href) {
+  await scrapeEmoji();
+}

@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '../.env' });
 import { parseArgs } from 'node:util';
+import { argv } from 'node:process';
+import { pathToFileURL } from 'node:url';
 import { Client } from '@notionhq/client';
 import { generateRandomEmoji } from './generator.js';
 
@@ -53,4 +55,6 @@ export const createNotionPageWithEmoji = async (
   }
 }
 
-await createNotionPageWithEmoji(values.title, values.content);
+if (import.meta.url === pathToFileURL(argv[1]).href) {
+  await createNotionPageWithEmoji(values.title, values.content);
+}

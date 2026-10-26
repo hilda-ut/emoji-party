@@ -21,5 +21,3 @@ export const updateNotionPageWithEmoji = async (pageId) => {
     return null;
   }
 }
-
-await updateNotionPageWithEmoji();
