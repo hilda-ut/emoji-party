@@ -11,7 +11,7 @@ export const generateRandomEmoji = async (
     `https://emojik.vercel.app/s/${encodeURIComponent(randomEmoji1)}_${encodeURIComponent(randomEmoji2)}?size=128`
   )
 
-  if (!response.ok || response.headers.get('status') === '404') {
+  if (!response.ok || response.status === 404) {
     if (attempt >= MAX_ATTEMPTS) {
       throw new Error(`Failed to generate emoji after ${MAX_ATTEMPTS} attempts`);
     }
